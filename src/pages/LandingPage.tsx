@@ -49,16 +49,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onShowLogin }) => {
           document.title = pageData.meta_title || pageData.title;
         }
 
-        const faviconUrl = 'https://mypowerly.com/v1/media/original_images/yolanda-whitfield-footer-logo.png';
-        let favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-        if (favicon) {
-          favicon.href = faviconUrl;
-        } else {
-          favicon = document.createElement('link');
-          favicon.rel = 'icon';
-          favicon.type = 'image/png';
-          favicon.href = faviconUrl;
-          document.head.appendChild(favicon);
+        if (pageData.favicon?.url) {
+          const faviconUrl = pageData.favicon.url.startsWith('http')
+            ? pageData.favicon.url
+            : `https://mypowerly.com/v1${pageData.favicon.url}`;
+          let favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+          if (favicon) {
+            favicon.href = faviconUrl;
+          } else {
+            favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.type = 'image/png';
+            favicon.href = faviconUrl;
+            document.head.appendChild(favicon);
+          }
         }
 
         const metaDescription = document.querySelector('meta[name="description"]');
