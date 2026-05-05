@@ -54,7 +54,7 @@ export const SiteSettingsProvider: React.FC<SiteSettingsProviderProps> = ({
         // Fallback to default values
         setSettings({
           siteTitle: "plansimba",
-          favicon: "/vite.svg",
+          favicon: "/simba.png",
           widgets: [],
         });
       } finally {
