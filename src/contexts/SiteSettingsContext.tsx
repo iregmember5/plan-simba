@@ -43,7 +43,7 @@ export const SiteSettingsProvider: React.FC<SiteSettingsProviderProps> = ({
 
         // Transform API response to our internal format
         const transformedSettings: SiteSettings = {
-          siteTitle: data.site_title || "notary-app",
+          siteTitle: data.site_title || "plansimba",
           favicon: data.favicon?.url ? getApiUrl(data.favicon.url) : "/vte.svg",
           widgets: data.widgets || [],
         };
@@ -53,7 +53,7 @@ export const SiteSettingsProvider: React.FC<SiteSettingsProviderProps> = ({
         setError(err instanceof Error ? err.message : "Unknown error");
         // Fallback to default values
         setSettings({
-          siteTitle: "notary-app",
+          siteTitle: "plansimba",
           favicon: "/vite.svg",
           widgets: [],
         });
